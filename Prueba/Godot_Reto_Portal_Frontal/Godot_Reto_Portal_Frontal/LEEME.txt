@@ -1,0 +1,37 @@
+RETO GODOT 4 - PORTALES CON COLISION Y ENTRADA FRONTAL
+
+1. Importar project.godot en Godot 4.x y ejecutar F5.
+2. Flechas o WASD: mover. R: reiniciar.
+
+ARBOL DE NODOS:
+Main (Node2D)
+ |-- Label (Label)
+ |-- Estrella (Area2D)
+ |     \-- CollisionShape2D (CircleShape2D)
+ |-- Personaje (CharacterBody2D)
+ |     \-- CollisionShape2D (CircleShape2D)
+ |-- PortalIzquierdo (Area2D)
+ |     \-- CollisionShape2D (RectangleShape2D)
+ \-- PortalDerecho (Area2D)
+       \-- CollisionShape2D (RectangleShape2D)
+
+PORTALES:
+- Poseen colision por Area2D (deteccion, no barrera fisica).
+- El portal izquierdo solo funciona si el Personaje llega desde el
+  CENTRO de la pantalla moviendose HACIA LA IZQUIERDA y entra
+  por la parte frontal a la altura central del portal.
+- El portal derecho solo funciona si llega desde el CENTRO de la
+  pantalla moviendose HACIA LA DERECHA y entra por el frente.
+- Entrar desde ARRIBA o ABAJO no activa ninguno de los portales.
+- Se elimina el antiguo teletransporte automatico al salir de pantalla.
+- Los lados de la pantalla limitan la posicion del personaje.
+- Para ver las formas de colision: Depurar > Formas de colision visibles.
+
+ESTRELLAS:
+Tocar estrella suma 1 al score y la cambia de lugar.
+A los 5 puntos se incrementa la velocidad.
+A los 10 puntos se anuncia la victoria.
+
+NOTA: Un Area2D detecta colisiones mediante body_entered, pero NO
+impide fisicamente pasar. Si quieres una barrera solida en el borde,
+se deben agregar elementos StaticBody2D separados.

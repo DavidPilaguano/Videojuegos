@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/estrella.gd" id="2_star"]
+[ext_resource type="Script" path="res://scripts/personaje.gd" id="3_player"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="4_portal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_star"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 23.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(32, 88)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 920.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 0.89, 0.47, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="Estrella" type="Area2D" parent="."]
+position = Vector2(730, 265)
+collision_layer = 2
+collision_mask = 1
+monitoring = true
+script = ExtResource("2_star")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estrella"]
+shape = SubResource("CircleShape2D_star")
+
+[node name="Personaje" type="CharacterBody2D" parent="."]
+position = Vector2(340, 270)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("3_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje"]
+shape = SubResource("CircleShape2D_player")
+
+[node name="PortalIzquierdo" type="Area2D" parent="."]
+position = Vector2(40, 270)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("4_portal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalIzquierdo"]
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="PortalDerecho" type="Area2D" parent="."]
+position = Vector2(920, 270)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("4_portal")
+es_izquierdo = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalDerecho"]
+shape = SubResource("RectangleShape2D_portal")

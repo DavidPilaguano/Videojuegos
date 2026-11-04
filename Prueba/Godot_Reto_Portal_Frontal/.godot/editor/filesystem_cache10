@@ -1,0 +1,9 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1793035306
+LEEME.txt::TextFile::-1::1793035238::0::1::::<><><>0<>0<><>::
+Main.tscn::PackedScene::-1::1793035238::0::1::::<><><>0<>0<><>::res://scripts/main.gd<>res://scripts/estrella.gd<>res://scripts/personaje.gd<>res://scripts/portal.gd
+::res://scripts/::1793035244
+estrella.gd::GDScript::7816287524470426189::1793035238::0::1::::<>Area2D<><>0<>0<><>::
+main.gd::GDScript::3306774939291256719::1793035238::0::1::::<>Node2D<><>0<>0<><>::
+personaje.gd::GDScript::4431203874942611987::1793035238::0::1::::<>CharacterBody2D<><>0<>0<><>::
+portal.gd::GDScript::149153229288005546::1793035238::0::1::::<>Area2D<><>0<>0<><>::

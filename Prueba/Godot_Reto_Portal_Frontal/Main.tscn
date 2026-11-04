@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ctoey028oxwvn"]
+
+[ext_resource type="Script" uid="uid://bnd3dn0jwkfkx" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://djmjd4jep8urd" path="res://scripts/estrella.gd" id="2_star"]
+[ext_resource type="Script" uid="uid://b4erjsfmn6py6" path="res://scripts/personaje.gd" id="3_player"]
+[ext_resource type="Script" uid="uid://ceisc4ugnn4u" path="res://scripts/portal.gd" id="4_portal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_star"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 23.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(32, 88)
+
+[node name="Main" type="Node2D" unique_id=384993182]
+script = ExtResource("1_main")
+
+[node name="Label" type="Label" parent="." unique_id=1010801863]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 920.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 0.89, 0.47, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="Estrella" type="Area2D" parent="." unique_id=143345416]
+position = Vector2(730, 265)
+collision_layer = 2
+script = ExtResource("2_star")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Estrella" unique_id=432599649]
+shape = SubResource("CircleShape2D_star")
+
+[node name="Personaje" type="CharacterBody2D" parent="." unique_id=1401407335]
+position = Vector2(340, 270)
+collision_mask = 0
+script = ExtResource("3_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje" unique_id=1901599369]
+shape = SubResource("CircleShape2D_player")
+
+[node name="PortalIzquierdo" type="Area2D" parent="." unique_id=285390966]
+position = Vector2(40, 270)
+collision_layer = 0
+script = ExtResource("4_portal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalIzquierdo" unique_id=1349908879]
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="PortalDerecho" type="Area2D" parent="." unique_id=1506637856]
+position = Vector2(920, 270)
+collision_layer = 0
+script = ExtResource("4_portal")
+es_izquierdo = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalDerecho" unique_id=628092916]
+shape = SubResource("RectangleShape2D_portal")
